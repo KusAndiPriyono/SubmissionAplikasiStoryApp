@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">SubmissionAplikasiStoryApp</string>
+
+    <string name="logout">Logout</string>
+    <string name="title_welcome_page">Selamat datang di Story App</string>
+    <string name="message_welcome_page">Jelajahi dunia imajinatif tanpa batas dengan Story App. Nikmati kisah menarik dari berbagai genre, interaksi unik, akses premium. Temukan petualangan di setiap sentuhan!</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+
+    <string name="create_account_page">Buat baru di sini?</string>
+    <string name="title_login_page">Selamat Datang Kembali</string>
+    <string name="message_login_page">Masukan datamu dulu untuk login ke akun Anda</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="title_signup_page">Buat Akun</string>
+    <string name="name">Nama</string>
+    <string name="message_signup_page">Dengan menggunakan layanan kami. Anda menyetujui Persyaratan dan Pernyataan Privasi</string>
+
+    <string name="title_home_stories">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_setting">Setting</string>
+    <string name="content_description_home">Home</string>
+
+
+    <string name="storyName">name %s</string>
+    <string name="storyDescription">desc %s</string>
+    <string name="date">date %s</string>
+
+    <string name="background">Background</string>
+    <string name="profile_name">Kus Andi Priyono</string>
+    <string name="profile_email">andipriyono94@gmail.com</string>
+    <string name="account_github">github.com/KusAndiPriyono</string>
+    <string name="log_out">Logut</string>
+
+</resources>
