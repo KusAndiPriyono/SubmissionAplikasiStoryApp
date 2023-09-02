@@ -3,7 +3,7 @@ package com.example.submissionaplikasistoryapp.data.retrofit
 import com.example.submissionaplikasistoryapp.data.response.login.LoginResponse
 import com.example.submissionaplikasistoryapp.data.response.signup.SignupResponse
 import com.example.submissionaplikasistoryapp.data.response.stories.AllStoriesResponse
-import com.example.submissionaplikasistoryapp.data.response.stories.NewStoryResponse
+import com.example.submissionaplikasistoryapp.data.response.stories.UploadStoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Field
@@ -42,5 +42,5 @@ interface ApiService {
     suspend fun postStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
-    ): NewStoryResponse
+    ): UploadStoryResponse
 }

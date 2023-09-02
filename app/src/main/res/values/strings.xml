@@ -33,5 +33,9 @@
     <string name="profile_email">andipriyono94@gmail.com</string>
     <string name="account_github">github.com/KusAndiPriyono</string>
     <string name="log_out">Logut</string>
+    <string name="camera">Camera</string>
+    <string name="upload">Upload</string>
+    <string name="description">Description</string>
+    <string name="gallery">Gallery</string>
 
 </resources>

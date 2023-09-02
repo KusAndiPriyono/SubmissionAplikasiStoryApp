@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.submissionaplikasistoryapp.di.Injection
 import com.example.submissionaplikasistoryapp.view.auth.login.LoginViewModel
 import com.example.submissionaplikasistoryapp.view.auth.signup.SignupViewModel
+import com.example.submissionaplikasistoryapp.view.main.createstory.CreateStoryViewModel
 import com.example.submissionaplikasistoryapp.view.main.liststory.HomeStoryViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -23,6 +24,10 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 
             modelClass.isAssignableFrom(HomeStoryViewModel::class.java) -> {
                 HomeStoryViewModel(Injection.provideRepository(context)) as T
+            }
+
+            modelClass.isAssignableFrom(CreateStoryViewModel::class.java) -> {
+                CreateStoryViewModel(Injection.provideRepository(context)) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

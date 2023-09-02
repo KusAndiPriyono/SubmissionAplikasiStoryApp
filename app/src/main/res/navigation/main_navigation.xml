@@ -34,4 +34,33 @@
         android:name="com.example.submissionaplikasistoryapp.view.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/createStoryFragment"
+        android:name="com.example.submissionaplikasistoryapp.view.main.createstory.CreateStoryFragment"
+        android:label="fragment_create_story"
+        tools:layout="@layout/fragment_create_story">
+        <action
+            android:id="@+id/action_createStoryFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_createStoryFragment_to_homeStoryFragment"
+            app:destination="@id/homeStoryFragment"
+            app:popUpTo="@id/homeStoryFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="isBackCamera"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.submissionaplikasistoryapp.view.main.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_cameraFragment_to_createStoryFragment"
+            app:destination="@id/createStoryFragment"
+            app:popUpTo="@id/homeStoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
