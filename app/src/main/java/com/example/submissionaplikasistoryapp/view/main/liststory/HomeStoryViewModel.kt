@@ -1,7 +1,6 @@
 package com.example.submissionaplikasistoryapp.view.main.liststory
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -13,5 +12,4 @@ class HomeStoryViewModel(storyRepository: StoryRepository) : ViewModel() {
     val stories: LiveData<PagingData<ListStoryItem>> =
         storyRepository.getStories().cachedIn(viewModelScope)
 
-    val transitionNames: MutableLiveData<Map<String, String>> = MutableLiveData()
 }

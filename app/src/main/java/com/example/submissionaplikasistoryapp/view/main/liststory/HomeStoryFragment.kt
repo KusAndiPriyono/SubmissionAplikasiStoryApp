@@ -1,17 +1,20 @@
 package com.example.submissionaplikasistoryapp.view.main.liststory
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.submissionaplikasistoryapp.R
 import com.example.submissionaplikasistoryapp.databinding.FragmentHomeStoryBinding
 import com.example.submissionaplikasistoryapp.utils.ViewModelFactory
 
-class HomeStoryFragment : Fragment() {
+class HomeStoryFragment : Fragment(R.layout.item_story) {
 
     private var _binding: FragmentHomeStoryBinding? = null
     private val binding get() = _binding!!
@@ -35,6 +38,8 @@ class HomeStoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
 
         homeStoryViewModel.stories.observe(viewLifecycleOwner) { data ->
             if (data != null) {
@@ -43,27 +48,30 @@ class HomeStoryFragment : Fragment() {
         }
 
         setupAdapter()
+
     }
 
     private fun setupAdapter() {
-        adapter = StoryAdapter { story ->
+        adapter = StoryAdapter { story, imageView, nameView, dateView, descView ->
             val action =
                 HomeStoryFragmentDirections.actionHomeStoryFragmentToDetailStoryFragment(
-                    story
+                    id = story.id,
+                    photoUrl = story.photoUrl,
+                    name = story.name,
+                    createdAt = story.createdAt,
+                    description = story.description,
                 )
-
-            val transitionNamesMap = mapOf(
-                "image_${story.id}" to story.photoUrl,
-                "name_${story.name}" to story.name,
-                "date_${story.createdAt}" to story.createdAt,
-                "desc_${story.description}" to story.description
+            val extras = FragmentNavigatorExtras(
+                imageView to imageView.transitionName,
+                nameView to nameView.transitionName,
+                dateView to dateView.transitionName,
+                descView to descView.transitionName
             )
-            homeStoryViewModel.transitionNames.value = transitionNamesMap
-
-            findNavController().navigate(action)
+            findNavController().navigate(action, extras)
         }
         binding.rvStory.adapter = adapter
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

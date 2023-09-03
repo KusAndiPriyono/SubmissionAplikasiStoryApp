@@ -24,9 +24,10 @@
     <string name="content_description_home">Home</string>
 
 
+    <string name="storyImage">image %s</string>
     <string name="storyName">name %s</string>
+    <string name="storyDate">date %s</string>
     <string name="storyDescription">desc %s</string>
-    <string name="date">date %s</string>
 
     <string name="background">Background</string>
     <string name="profile_name">Kus Andi Priyono</string>
@@ -37,5 +38,6 @@
     <string name="upload">Upload</string>
     <string name="description">Description</string>
     <string name="gallery">Gallery</string>
+    <string name="image_detail">Image Detail</string>
 
 </resources>

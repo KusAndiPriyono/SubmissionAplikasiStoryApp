@@ -26,8 +26,20 @@
         android:label="fragment_detail_story"
         tools:layout="@layout/fragment_detail_story">
         <argument
-            android:name="story"
-            app:argType="com.example.submissionaplikasistoryapp.data.database.ListStoryItem" />
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="createdAt"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="photo_url"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

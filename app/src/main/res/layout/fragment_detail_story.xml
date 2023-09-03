@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail_story_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".view.main.detailstory.DetailStoryFragment">
+
+    <data>
+
+        <variable
+            name="listStoryItem"
+            type="com.example.submissionaplikasistoryapp.data.database.ListStoryItem" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,11 +22,11 @@
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_round"
-            android:transitionName="image"
+            android:transitionName="@{@string/storyImage(String.valueOf(listStoryItem.id))}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:loadImage="@{listStoryItem.photoUrl}" />
 
         <TextView
             android:id="@+id/tv_detail_story_name"
@@ -29,23 +34,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/name"
+            android:text="@{listStoryItem.name}"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:transitionName="name"
+            android:transitionName="@{@string/storyName(String.valueOf(listStoryItem.id))}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_detail_story" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_detail_story"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/tv_detail_story_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="@string/date"
+            android:text="@{listStoryItem.createdAt}"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:transitionName="date"
+            android:transitionName="@{@string/storyDate(String.valueOf(listStoryItem.id))}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_detail_story_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_detail_story_name" />
@@ -57,10 +63,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/storyDescription"
+            android:text="@{listStoryItem.description}"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:transitionName="description"
+            android:transitionName="@{@string/storyDescription(String.valueOf(listStoryItem.id))}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_detail_story_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_story_name" />
@@ -75,8 +81,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</layout>

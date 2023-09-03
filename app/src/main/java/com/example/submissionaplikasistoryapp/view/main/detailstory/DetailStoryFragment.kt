@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -15,21 +13,14 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.example.submissionaplikasistoryapp.data.database.ListStoryItem
 import com.example.submissionaplikasistoryapp.databinding.FragmentDetailStoryBinding
-import com.example.submissionaplikasistoryapp.utils.ViewModelFactory
-import com.example.submissionaplikasistoryapp.view.main.liststory.HomeStoryViewModel
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 
 class DetailStoryFragment : Fragment() {
 
     private var _binding: FragmentDetailStoryBinding? = null
     private val binding get() = _binding!!
-
-    private val homeStoryViewModel: HomeStoryViewModel by viewModels {
-        ViewModelFactory(requireActivity())
-    }
 
 
     override fun onCreateView(
@@ -47,55 +38,53 @@ class DetailStoryFragment : Fragment() {
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
             .inflateTransition(android.R.transition.move)
 
-        val args: DetailStoryFragmentArgs by navArgs()
-        val story = args.story
+        binding.listStoryItem = ListStoryItem(
+            id = arguments?.getString("id") ?: "",
+            photoUrl = arguments?.getString("photo_url") ?: "",
+            name = arguments?.getString("name") ?: "",
+            createdAt = arguments?.getString("created_at") ?: "",
+            description = arguments?.getString("description") ?: "",
+        )
 
-        val transitionNamesMap = homeStoryViewModel.transitionNames.value
-        if (transitionNamesMap != null) {
-            binding.ivDetailStory.transitionName = transitionNamesMap["image_${story.id}"]
-            binding.tvDetailStoryName.transitionName = transitionNamesMap["name_${story.name}"]
-            binding.tvDetailStoryDate.transitionName = transitionNamesMap["date_${story.createdAt}"]
-            binding.tvDetailStoryDesc.transitionName =
-                transitionNamesMap["desc_${story.description}"]
-        }
+        val progressBar = binding.progressBarDetail
 
-        Glide.with(binding.ivDetailStory.context)
-            .load(story.photoUrl)
-            .apply(RequestOptions.centerCropTransform())
+        Glide.with(this)
+            .load(arguments?.getString("photo_url"))
+            .apply(
+                RequestOptions()
+                    .override(350, 550)
+                    .placeholder(android.R.color.darker_gray)
+                    .error(android.R.color.holo_red_light)
+            )
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
+                    p0: GlideException?,
+                    p1: Any?,
+                    p2: Target<Drawable>?,
+                    p3: Boolean
                 ): Boolean {
                     startPostponedEnterTransition()
+                    progressBar.visibility = View.GONE
                     return false
                 }
 
                 override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
+                    p0: Drawable?,
+                    p1: Any?,
+                    p2: Target<Drawable>?,
+                    p3: DataSource?,
+                    p4: Boolean
                 ): Boolean {
                     startPostponedEnterTransition()
+                    progressBar.visibility = View.GONE
                     return false
                 }
 
             })
             .into(binding.ivDetailStory)
 
-        binding.tvDetailStoryName.text = story.name
 
-        val originalDateFormat =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-        val targetDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        val originalDate = originalDateFormat.parse(story.createdAt)
-        val formattedDate = targetDateFormat.format(originalDate!!)
-        binding.tvDetailStoryDate.text = formattedDate
-        binding.tvDetailStoryDesc.text = story.description
+        binding.executePendingBindings()
 
     }
 

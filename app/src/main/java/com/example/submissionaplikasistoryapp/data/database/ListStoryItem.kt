@@ -1,13 +1,10 @@
 package com.example.submissionaplikasistoryapp.data.database
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "ListStoryItem")
-@Parcelize
 data class ListStoryItem(
 
     @field:SerializedName("photoUrl")
@@ -31,4 +28,4 @@ data class ListStoryItem(
 
     @field:SerializedName("lat")
     val lat: Double? = null
-) : Parcelable
+)
