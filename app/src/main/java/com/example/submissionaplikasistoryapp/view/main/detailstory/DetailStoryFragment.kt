@@ -42,7 +42,7 @@ class DetailStoryFragment : Fragment() {
             id = arguments?.getString("id") ?: "",
             photoUrl = arguments?.getString("photo_url") ?: "",
             name = arguments?.getString("name") ?: "",
-            createdAt = arguments?.getString("created_at") ?: "",
+            createdAt = arguments?.getString("createdAt") ?: "",
             description = arguments?.getString("description") ?: "",
         )
 
