@@ -56,7 +56,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:transitionName="@{@string/storyDate(String.valueOf(listStoryItem.id))}"
-                app:formatDate="@{listStoryItem.createdAt}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_detail_story_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_detail_story_name"

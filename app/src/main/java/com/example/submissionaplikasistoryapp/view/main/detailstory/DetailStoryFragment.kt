@@ -15,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.example.submissionaplikasistoryapp.data.database.ListStoryItem
 import com.example.submissionaplikasistoryapp.databinding.FragmentDetailStoryBinding
+import com.example.submissionaplikasistoryapp.utils.DateFormatter
+import java.util.TimeZone
 
 
 class DetailStoryFragment : Fragment() {
@@ -49,6 +51,11 @@ class DetailStoryFragment : Fragment() {
         )
 
         val progressBar = binding.progressBarDetail
+
+        binding.tvDetailStoryDate.text = DateFormatter.formatDate(
+            arguments?.getString("createdAt") ?: "",
+            TimeZone.getDefault().id
+        )
 
         Glide.with(this)
             .load(arguments?.getString("photo_url"))

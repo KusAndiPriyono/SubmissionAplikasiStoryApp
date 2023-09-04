@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.submissionaplikasistoryapp.data.database.ListStoryItem
 import com.example.submissionaplikasistoryapp.databinding.ItemStoryBinding
+import com.example.submissionaplikasistoryapp.utils.DateFormatter
+import java.util.TimeZone
 
 class StoryAdapter(
     private val listener: (
@@ -65,6 +67,7 @@ class StoryViewHolder(val view: ItemStoryBinding) : RecyclerView.ViewHolder(view
     fun bind(item: ListStoryItem) {
         view.listStoryItem = item
 
+        view.tvStoryDate.text = DateFormatter.formatDate(item.createdAt, TimeZone.getDefault().id)
         view.executePendingBindings()
 
     }
