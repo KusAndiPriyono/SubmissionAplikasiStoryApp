@@ -22,7 +22,7 @@ class StoryPagingStore(private val apiService: ApiService) : PagingSource<Int, L
 
             LoadResult.Page(
                 data = responseData.listStory,
-                prevKey = if (page == 1) null else page - 1,
+                prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1,
                 nextKey = if (responseData.listStory.isEmpty()) null else page + 1
             )
         } catch (exception: Exception) {

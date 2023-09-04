@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submissionaplikasistoryapp.R
 import com.example.submissionaplikasistoryapp.databinding.FragmentHomeStoryBinding
+import com.example.submissionaplikasistoryapp.utils.LoadingStateAdapter
 import com.example.submissionaplikasistoryapp.utils.ViewModelFactory
 
 class HomeStoryFragment : Fragment(R.layout.item_story) {
@@ -69,7 +70,11 @@ class HomeStoryFragment : Fragment(R.layout.item_story) {
             )
             findNavController().navigate(action, extras)
         }
-        binding.rvStory.adapter = adapter
+        binding.rvStory.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            }
+        )
     }
 
 

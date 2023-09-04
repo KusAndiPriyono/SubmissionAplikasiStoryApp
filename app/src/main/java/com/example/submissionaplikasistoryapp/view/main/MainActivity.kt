@@ -13,6 +13,7 @@ import com.example.submissionaplikasistoryapp.R
 import com.example.submissionaplikasistoryapp.databinding.ActivityMainBinding
 import com.example.submissionaplikasistoryapp.utils.Preference
 import com.example.submissionaplikasistoryapp.view.auth.AuthActivity
+import com.example.submissionaplikasistoryapp.view.main.map.MapsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,8 +48,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
+        supportActionBar?.hide()
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -58,11 +58,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-
-        binding.bottomAppBar.setNavigationOnClickListener {
-            // Handle navigation icon press
-
-        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_activity_main_fragment) as NavHostFragment
@@ -81,6 +76,12 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.app_bar_profile -> {
                     navController.navigate(R.id.profileFragment)
+                    true
+                }
+
+                R.id.app_bar_maps -> {
+                    val intent = Intent(this, MapsActivity::class.java)
+                    startActivity(intent)
                     true
                 }
 

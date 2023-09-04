@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import com.example.submissionaplikasistoryapp.R
 
 class CustomEditText : AppCompatEditText, View.OnTouchListener {
 
@@ -36,7 +37,7 @@ class CustomEditText : AppCompatEditText, View.OnTouchListener {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().length < 8) {
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
+                    setError(resources.getString(R.string.error_password_length), null)
                     setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
                 } else {
                     error = null

@@ -12,78 +12,84 @@
             type="com.example.submissionaplikasistoryapp.data.database.ListStoryItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_detail_story"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:contentDescription="@string/image_detail"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_round"
-            android:transitionName="@{@string/storyImage(String.valueOf(listStoryItem.id))}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:loadImage="@{listStoryItem.photoUrl}" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_detail_story_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@{listStoryItem.name}"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:transitionName="@{@string/storyName(String.valueOf(listStoryItem.id))}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_detail_story"
-            tools:text="Name" />
+            <ImageView
+                android:id="@+id/iv_detail_story"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/image_detail"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher_round"
+                android:transitionName="@{@string/storyImage(String.valueOf(listStoryItem.id))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{listStoryItem.photoUrl}" />
 
-        <TextView
-            android:id="@+id/tv_detail_story_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:transitionName="@{@string/storyDate(String.valueOf(listStoryItem.id))}"
-            app:formatDate="@{listStoryItem.createdAt}"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_detail_story_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_detail_story_name"
-            tools:text="Date" />
+            <TextView
+                android:id="@+id/tv_detail_story_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{listStoryItem.name}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:transitionName="@{@string/storyName(String.valueOf(listStoryItem.id))}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_detail_story"
+                tools:text="Name" />
 
-        <TextView
-            android:id="@+id/tv_detail_story_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{listStoryItem.description}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:transitionName="@{@string/storyDescription(String.valueOf(listStoryItem.id))}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_detail_story_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_story_name"
-            tools:text="Description" />
+            <TextView
+                android:id="@+id/tv_detail_story_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:transitionName="@{@string/storyDate(String.valueOf(listStoryItem.id))}"
+                app:formatDate="@{listStoryItem.createdAt}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_detail_story_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_detail_story_name"
+                tools:text="Date" />
 
-        <ProgressBar
-            android:id="@+id/progressBarDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_detail_story_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{listStoryItem.description}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:transitionName="@{@string/storyDescription(String.valueOf(listStoryItem.id))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_detail_story_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_story_name"
+                tools:text="Description" />
+
+            <ProgressBar
+                android:id="@+id/progressBarDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

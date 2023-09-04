@@ -44,6 +44,8 @@ class DetailStoryFragment : Fragment() {
             name = arguments?.getString("name") ?: "",
             createdAt = arguments?.getString("createdAt") ?: "",
             description = arguments?.getString("description") ?: "",
+            lat = arguments?.getDouble("lat") ?: 0.0,
+            lon = arguments?.getDouble("lon") ?: 0.0
         )
 
         val progressBar = binding.progressBarDetail

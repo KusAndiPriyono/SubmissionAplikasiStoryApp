@@ -10,6 +10,7 @@ import androidx.paging.liveData
 import com.example.submissionaplikasistoryapp.data.database.ListStoryItem
 import com.example.submissionaplikasistoryapp.data.response.login.LoginResponse
 import com.example.submissionaplikasistoryapp.data.response.signup.SignupResponse
+import com.example.submissionaplikasistoryapp.data.response.stories.AllStoriesResponse
 import com.example.submissionaplikasistoryapp.data.response.stories.UploadStoryResponse
 import com.example.submissionaplikasistoryapp.data.retrofit.ApiService
 import com.google.gson.Gson
@@ -65,6 +66,17 @@ class StoryRepository(private val apiService: ApiService) {
             emit(Result.Success(response))
         } catch (e: Exception) {
             Log.e("CreateStoryViewModel", "postStory: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun getStoryWithLocation(): LiveData<Result<AllStoriesResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getStoriesWithLocation(1)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            Log.e("ListStoryViewModel", "getStoryWithLocation: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
     }

@@ -16,35 +16,50 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="@string/description"
+            app:boxBackgroundMode="outline"
             app:layout_constraintBottom_toTopOf="@+id/btn_add"
             app:layout_constraintEnd_toEndOf="@+id/btn_add"
             app:layout_constraintStart_toStartOf="@+id/btn_add"
-            app:layout_constraintTop_toBottomOf="@+id/btn_camera">
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal">
 
             <EditText
                 android:id="@+id/ed_add_description"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_height="160dp"
+                android:gravity="top|start"
+                android:inputType="textPersonName"
+                android:lines="4"
+                android:minLines="4"
+                android:scrollbars="vertical"
+                tools:ignore="Autofill,LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/include_location"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/descriptionEditTextLayout"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditTextLayout"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Button
             android:id="@+id/btn_add"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="@string/upload"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditTextLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/switch_location" />
 
         <ImageView
             android:id="@+id/iv_preview_image"
@@ -54,6 +69,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="64dp"
+            android:contentDescription="@string/image_detail"
             app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

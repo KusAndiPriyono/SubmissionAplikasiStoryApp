@@ -40,4 +40,19 @@
     <string name="gallery">Gallery</string>
     <string name="image_detail">Image Detail</string>
 
+    <string name="error_password_length">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="error_email_empty">Email tidak boleh kosong</string>
+    <string name="error_email_format">Format email tidak sesuai</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_maps">Maps</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
+    <string name="error_parsing_style">Style parsing failed.</string>
+    <string name="error_find_style">Can\'t find style. Error</string>
+    <string name="include_location">Include Location</string>
+    <string name="retry">Coba Lagi</string>
+
+
 </resources>

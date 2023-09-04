@@ -43,10 +43,10 @@ class CustomEmailValidationEditText : AppCompatEditText, View.OnTouchListener {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().isEmpty()) {
-                    setError("Email tidak boleh kosong", errorIcon)
+                    setError(resources.getString(R.string.error_email_empty), errorIcon)
                     setCompoundDrawablesWithIntrinsicBounds(null, null, errorIcon, null)
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()) {
-                    setError("Email tidak valid", errorIcon)
+                    setError(resources.getString(R.string.error_email_format), errorIcon)
                     setCompoundDrawablesWithIntrinsicBounds(null, null, errorIcon, null)
                 } else {
                     setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)

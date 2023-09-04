@@ -34,7 +34,6 @@ class CreateStoryFragment : Fragment() {
     private var getFile: File? = null
     private var _binding: FragmentCreateStoryBinding? = null
     private val binding get() = _binding!!
-
     private val createStoryViewModel: CreateStoryViewModel by viewModels {
         ViewModelFactory(requireActivity())
     }
@@ -48,7 +47,7 @@ class CreateStoryFragment : Fragment() {
         return binding.root
     }
 
-
+    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -97,7 +96,6 @@ class CreateStoryFragment : Fragment() {
                 val requestImage = file.asRequestBody("image/*".toMediaTypeOrNull())
                 val imageMultiPart: MultipartBody.Part =
                     MultipartBody.Part.createFormData("photo", file.name, requestImage)
-
                 createStoryViewModel.postStory(imageMultiPart, description)
                     .observe(viewLifecycleOwner) {
                         if (it != null) {
