@@ -55,10 +55,10 @@ class CreateStoryFragment : Fragment() {
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnAdd.setOnClickListener { uploadImage() }
 
-        val fileUri = arguments?.get("selected_image")
+        val fileUri = arguments?.get(ARG_SELECTED_IMAGE)
         if (fileUri != null) {
             val uri: Uri = fileUri as Uri
-            val isBackCamera = arguments?.get("isBackCamera") as Boolean
+            val isBackCamera = arguments?.get(ARG_IS_BACK_CAMERA) as Boolean
             val result = rotateFile(BitmapFactory.decodeFile(uri.path), isBackCamera)
             getFile = uri.toFile()
             binding.ivPreviewImage.setImageBitmap(result)
@@ -135,4 +135,10 @@ class CreateStoryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        const val ARG_SELECTED_IMAGE = "selected_image"
+        const val ARG_IS_BACK_CAMERA = "isBackCamera"
+    }
+
 }

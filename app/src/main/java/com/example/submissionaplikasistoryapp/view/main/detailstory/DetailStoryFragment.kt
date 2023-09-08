@@ -41,13 +41,13 @@ class DetailStoryFragment : Fragment() {
             .inflateTransition(android.R.transition.move)
 
         binding.listStoryItem = ListStoryItem(
-            id = arguments?.getString("id") ?: "",
-            photoUrl = arguments?.getString("photo_url") ?: "",
-            name = arguments?.getString("name") ?: "",
-            createdAt = arguments?.getString("createdAt") ?: "",
-            description = arguments?.getString("description") ?: "",
-            lat = arguments?.getDouble("lat") ?: 0.0,
-            lon = arguments?.getDouble("lon") ?: 0.0
+            id = arguments?.getString(ARG_ID) ?: "",
+            photoUrl = arguments?.getString(ARG_PHOTO_URL) ?: "",
+            name = arguments?.getString(ARG_NAME) ?: "",
+            createdAt = arguments?.getString(ARG_CREATED_AT) ?: "",
+            description = arguments?.getString(ARG_DESCRIPTION) ?: "",
+            lat = arguments?.getDouble(ARG_LAT) ?: 0.0,
+            lon = arguments?.getDouble(ARG_LON) ?: 0.0
         )
 
         val progressBar = binding.progressBarDetail
@@ -100,5 +100,15 @@ class DetailStoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val ARG_ID = "id"
+        const val ARG_PHOTO_URL = "photo_url"
+        const val ARG_NAME = "name"
+        const val ARG_CREATED_AT = "createdAt"
+        const val ARG_DESCRIPTION = "description"
+        const val ARG_LAT = "lat"
+        const val ARG_LON = "lon"
     }
 }
