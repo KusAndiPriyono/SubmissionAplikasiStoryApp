@@ -11,5 +11,4 @@ import com.example.submissionaplikasistoryapp.data.database.ListStoryItem
 class HomeStoryViewModel(storyRepository: StoryRepository) : ViewModel() {
     val stories: LiveData<PagingData<ListStoryItem>> =
         storyRepository.getStories().cachedIn(viewModelScope)
-
 }

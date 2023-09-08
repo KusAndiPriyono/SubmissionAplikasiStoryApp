@@ -2,13 +2,12 @@ package com.example.submissionaplikasistoryapp.view.auth.signup
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,14 +16,15 @@ import com.example.submissionaplikasistoryapp.databinding.FragmentSignupBinding
 import com.example.submissionaplikasistoryapp.utils.ViewModelFactory
 import com.example.submissionaplikasistoryapp.view.customview.CustomButton
 import com.example.submissionaplikasistoryapp.view.customview.CustomEditText
-import com.example.submissionaplikasistoryapp.view.customview.CustomEmailValidationEditText
 
 
 class SignupFragment : Fragment() {
 
-    private lateinit var customEditText: CustomEditText
+    private lateinit var customNameEditText: CustomEditText
+    private lateinit var customEmailEditText: CustomEditText
+    private lateinit var customPasswordEditText: CustomEditText
     private lateinit var customButton: CustomButton
-    private lateinit var customEmailValidationEditText: CustomEmailValidationEditText
+
 
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
@@ -45,25 +45,22 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        customEditText = binding.edRegisterPassword
+        customNameEditText = binding.edRegisterName
+        customEmailEditText = binding.edRegisterEmail
+        customPasswordEditText = binding.edRegisterPassword
         customButton = binding.signupButton
-        customEmailValidationEditText = binding.edRegisterEmail
 
         setCustomButtonEnable()
 
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                setCustomButtonEnable()
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-        }
-        customEditText.addTextChangedListener(textWatcher)
-        customEmailValidationEditText.addTextChangedListener(textWatcher)
+        customNameEditText.addTextChangedListener(onTextChanged = { _, _, _, _ ->
+            setCustomButtonEnable()
+        })
+        customEmailEditText.addTextChangedListener(onTextChanged = { _, _, _, _ ->
+            setCustomButtonEnable()
+        })
+        customPasswordEditText.addTextChangedListener(onTextChanged = { _, _, _, _ ->
+            setCustomButtonEnable()
+        })
 
         binding.signupButton.setOnClickListener { it ->
             val name = binding.edRegisterName.text.toString()
@@ -105,8 +102,9 @@ class SignupFragment : Fragment() {
     }
 
     private fun setCustomButtonEnable() {
-        binding.signupButton.isEnabled = customEditText.text.toString()
-            .isNotEmpty() && customEmailValidationEditText.text.toString().isNotEmpty()
+        binding.signupButton.isEnabled = customNameEditText.text!!.isNotEmpty() &&
+                customEmailEditText.text!!.isNotEmpty() &&
+                customPasswordEditText.text!!.isNotEmpty()
     }
 
     override fun onDestroyView() {

@@ -55,7 +55,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
@@ -66,10 +66,10 @@
             app:layout_constraintTop_toBottomOf="@+id/messageTextView"
             app:startIconDrawable="@drawable/ic_email_24">
 
-            <com.example.submissionaplikasistoryapp.view.customview.CustomEmailValidationEditText
+            <com.example.submissionaplikasistoryapp.view.customview.CustomEditText
                 android:id="@+id/ed_login_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -78,7 +78,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordEditTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
@@ -93,7 +93,7 @@
             <com.example.submissionaplikasistoryapp.view.customview.CustomEditText
                 android:id="@+id/ed_login_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:ems="10"
                 android:inputType="textPassword"
                 tools:ignore="SpeakableTextPresentCheck" />

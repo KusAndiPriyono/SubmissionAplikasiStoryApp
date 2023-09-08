@@ -35,13 +35,22 @@ class AuthFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_authFragment_to_signupFragment)
         )
 
-        val sharedPref = Preference.initPref(requireContext(), "onSignIn")
-        val token = sharedPref.getString("token", "")
+        val sharedPref = Preference.initPref(requireContext(), SHARED_PREF_KEY)
+        val token = sharedPref.getString(TOKEN_KEY, "")
 
-        if (token != "") {
+//        if (token != "") {
+//            val action = AuthFragmentDirections.actionAuthFragmentToMainActivity()
+//            Navigation.findNavController(view).navigate(action)
+//        }
+        if (token?.isNotEmpty() == true) {
             val action = AuthFragmentDirections.actionAuthFragmentToMainActivity()
             Navigation.findNavController(view).navigate(action)
         }
+    }
+
+    companion object {
+        const val SHARED_PREF_KEY = "onSignIn"
+        const val TOKEN_KEY = "token"
     }
 
     override fun onDestroy() {

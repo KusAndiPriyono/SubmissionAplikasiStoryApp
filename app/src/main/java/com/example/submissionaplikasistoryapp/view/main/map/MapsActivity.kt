@@ -85,7 +85,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         }
-
         getMyLocation()
         setMapStyle()
     }

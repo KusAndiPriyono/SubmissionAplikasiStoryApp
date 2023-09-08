@@ -88,5 +88,8 @@ dependencies {
     testImplementation("org.mockito:mockito-core:4.4.0")
     testImplementation("org.mockito:mockito-inline:4.4.0")
 
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 }
